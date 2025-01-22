@@ -1,4 +1,4 @@
-package com.application.podcasts.ui.theme
+package com.application.podcasts.sharedUI.theme
 
 import androidx.compose.ui.graphics.Color
 

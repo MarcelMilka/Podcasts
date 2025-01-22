@@ -1,6 +1,5 @@
-package com.application.podcasts.ui.theme
+package com.application.podcasts.sharedUI.theme
 
-import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.material3.MaterialTheme
