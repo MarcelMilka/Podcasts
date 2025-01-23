@@ -58,4 +58,7 @@ dependencies {
 //  Navigation
     implementation(libs.navigation.compose)
     implementation(libs.kotlinx.serialization.json)
+
+//  Google Icons
+    implementation(libs.androidx.material.icons.extended)
 }
