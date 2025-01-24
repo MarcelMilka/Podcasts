@@ -20,6 +20,7 @@ import com.application.podcasts.constants.navigation.subscreens.LibrarySubscreen
 import com.application.podcasts.main.explore.explore.ui.impl.exploreImpl
 import com.application.podcasts.main.home.habitTracker.ui.impl.habitTrackerImpl
 import com.application.podcasts.main.home.podcasts.ui.impl.podcastsImpl
+import com.application.podcasts.main.library.ui.impl.libraryImpl
 import com.application.podcasts.sharedUI.commonComponents.screenNavigationBar.ScreenNavigationBar
 import com.application.podcasts.sharedUI.commonComponents.subscreenNavigationBar.SubscreenNavigationBar
 
@@ -85,10 +86,7 @@ class MainActivity : ComponentActivity() {
 
                             navigation<Screens.Library>(startDestination = LibrarySubscreens.Library) {
 
-                                composable<LibrarySubscreens.Library> {
-
-                                    Text("")
-                                }
+                                libraryImpl()
                             }
                         }
                     )
