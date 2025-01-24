@@ -1,4 +1,4 @@
-package com.application.podcasts.sharedUI.commonElements
+package com.application.podcasts.sharedUI.commonComponents.screenNavigationBar
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
@@ -17,10 +17,10 @@ import androidx.compose.ui.unit.dp
 import com.application.podcasts.sharedUI.theme.White50
 
 @Composable
-fun bottomBarIconButton(
+fun ScreenNavigationBarIcon(
     onClick: () -> Unit,
 
-    isActivated: Boolean,
+    isActive: Boolean,
     isEnabled: Boolean,
 
     imageVector: ImageVector,
@@ -28,7 +28,7 @@ fun bottomBarIconButton(
 ) {
 
     val targetSize =
-        when(isActivated) {
+        when(isActive) {
 
             true -> {
 
@@ -50,7 +50,7 @@ fun bottomBarIconButton(
     )
 
     val targetTint =
-        when(isActivated) {
+        when(isActive) {
 
             true -> {
 
