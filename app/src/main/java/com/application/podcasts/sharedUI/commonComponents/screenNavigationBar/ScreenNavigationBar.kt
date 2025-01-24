@@ -23,7 +23,7 @@ fun ScreenNavigationBar(
     onNavigate: (CurrentScreen) -> Unit
 ) {
 
-    var currentScreen by rememberSaveable {
+    var currentScreen by remember {
 
         mutableStateOf(CurrentScreen.Home)
     }
@@ -73,7 +73,7 @@ fun ScreenNavigationBar(
             mapOf(
                 CurrentScreen.Explore to Icons.Rounded.Explore to "Bottom bar icon button explore",
                 CurrentScreen.Home to Icons.Rounded.Home to "Bottom bar icon button home",
-                CurrentScreen.Library to Icons.Rounded.Cloud to "Bottom bar icon button cloud",
+                CurrentScreen.Library to Icons.Rounded.Cloud to "Bottom bar icon button library",
             ).forEach {
 
                 ScreenNavigationBarIcon(

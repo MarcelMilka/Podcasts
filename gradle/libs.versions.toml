@@ -10,6 +10,8 @@ composeNavigation = "2.8.5"
 materialIconsExtended = "1.7.6"
 serialization = "1.6.3"
 kotlin = "1.9.20"
+uiTestJunit4 = "1.7.6"
+uiTestManifest = "1.7.6"
 
 [libraries]
 androidx-compose-bom = { module = "androidx.compose:compose-bom", version.ref = "composeBom" }
@@ -29,6 +31,8 @@ androidx-ui-tooling-preview = { module = "androidx.compose.ui:ui-tooling-preview
 junit = { module = "junit:junit", version.ref = "junit" }
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
+ui-test-junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "uiTestJunit4" }
+ui-test-manifest = { module = "androidx.compose.ui:ui-test-manifest", version.ref = "uiTestManifest" }
 
 [plugins]
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

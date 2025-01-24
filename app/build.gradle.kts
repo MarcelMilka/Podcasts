@@ -61,4 +61,9 @@ dependencies {
 
 //  Google Icons
     implementation(libs.androidx.material.icons.extended)
+
+//  Testing compose
+    androidTestImplementation(libs.ui.test.junit4)
+    debugImplementation(libs.ui.test.manifest)
+    testImplementation(kotlin("test"))
 }
