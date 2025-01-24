@@ -7,13 +7,12 @@ import androidx.compose.material.icons.rounded.Cloud
 import androidx.compose.material.icons.rounded.Explore
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
-import com.application.podcasts.constants.Padding
-import com.application.podcasts.constants.navigation.screens.CurrentScreen
-import com.application.podcasts.constants.navigation.screens.convertToEnumCurrentScreen
+import com.application.podcasts.constants.values.Padding
+import com.application.podcasts.constants.navigation.CurrentScreen
+import com.application.podcasts.constants.navigation.convertToEnumCurrentScreen
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 

@@ -1,4 +1,4 @@
-package com.application.podcasts.constants
+package com.application.podcasts.constants.values
 
 object Padding {
 

@@ -1,4 +1,4 @@
-package com.application.podcasts.constants.navigation.screens
+package com.application.podcasts.constants.navigation
 
 enum class CurrentScreen {
     Explore,
