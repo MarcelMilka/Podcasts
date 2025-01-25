@@ -1,25 +1,27 @@
-package com.application.podcasts.subscreenNavigationBar.ui.components
+package com.application.podcasts.subscreenNavigationBar.ui.elements
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.SpringSpec
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.ButtonDefaults
-import androidx.compose.material3.ElevatedButton
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Person
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.IconButtonDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.unit.dp
-import com.application.podcasts.sharedUI.commonElements.PrimaryLabel
 import com.application.podcasts.sharedUI.theme.DarkPrimary
 import com.application.podcasts.sharedUI.theme.DarkSecondary
 
 @Composable
-fun SubscreenNavigationBarButton(
+fun SubscreenNavigationBarIconButton(
     isActive: Boolean,
     isEnabled: Boolean,
-    content: String,
     onClick: () -> Unit
 ) {
 
@@ -45,7 +47,7 @@ fun SubscreenNavigationBarButton(
         )
     )
 
-    ElevatedButton(
+    IconButton(
 
         onClick = {
 
@@ -53,22 +55,25 @@ fun SubscreenNavigationBarButton(
         },
 
         modifier = Modifier
+            .width(37.dp)
             .height(37.dp),
 
         enabled = isEnabled,
 
-        shape = RoundedCornerShape(20.dp),
-
-        colors = ButtonDefaults.buttonColors(
+        colors = IconButtonDefaults.iconButtonColors(
             containerColor = color,
-            disabledContainerColor = DarkPrimary
+            contentColor = White,
+            disabledContainerColor = DarkPrimary,
+            disabledContentColor = White
         ),
-
-        elevation = ButtonDefaults.buttonElevation(10.dp),
 
         content = {
 
-            PrimaryLabel(content)
+            Icon(
+
+                imageVector = Icons.Rounded.Person,
+                contentDescription = null
+            )
         }
     )
 }

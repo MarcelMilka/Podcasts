@@ -4,7 +4,6 @@ sealed class CurrentSubscreen {
     object Podcasts: CurrentSubscreen()
     object HabitTracker: CurrentSubscreen()
     object Explore: CurrentSubscreen()
-    object Account: CurrentSubscreen()
 }
 
 fun String.convertToCurrentSubscreen(): CurrentSubscreen? =
@@ -13,6 +12,5 @@ fun String.convertToCurrentSubscreen(): CurrentSubscreen? =
         "Podcasts" -> CurrentSubscreen.Podcasts
         "HabitTracker" -> CurrentSubscreen.HabitTracker
         "Explore" -> CurrentSubscreen.Explore
-        "Account" -> CurrentSubscreen.Account
         else -> null
     }

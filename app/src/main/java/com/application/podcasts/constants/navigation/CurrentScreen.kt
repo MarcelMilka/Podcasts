@@ -3,7 +3,8 @@ package com.application.podcasts.constants.navigation
 enum class CurrentScreen {
     Explore,
     Home,
-    Library
+    Library,
+    Account
 }
 
 fun String.convertToCurrentScreen(): CurrentScreen? =
@@ -13,5 +14,6 @@ fun String.convertToCurrentScreen(): CurrentScreen? =
         "Podcasts" -> CurrentScreen.Home
         "HabitTracker" -> CurrentScreen.Home
         "Library" -> CurrentScreen.Library
+        "Account" -> CurrentScreen.Account
         else -> null
     }

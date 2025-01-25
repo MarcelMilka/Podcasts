@@ -30,6 +30,13 @@ fun SubscreenNavigationBarImpl(navigationController: NavHostController) {
             navigationController.navigate(
                 route = Navigation.RouteHome.HabitTracker
             )
+        },
+
+        onNavigateToAccount = {
+
+            navigationController.navigate(
+                route = Navigation.Account
+            )
         }
     )
 }

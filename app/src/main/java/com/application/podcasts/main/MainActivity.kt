@@ -8,10 +8,12 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.application.podcasts.constants.navigation.Navigation
 import com.application.podcasts.constants.navigation.CurrentScreen
+import com.application.podcasts.main.account.ui.impl.accountImpl
 import com.application.podcasts.main.explore.explore.ui.impl.exploreImpl
 import com.application.podcasts.main.home.habitTracker.ui.impl.habitTrackerImpl
 import com.application.podcasts.main.home.podcasts.ui.impl.podcastsImpl
@@ -53,6 +55,7 @@ class MainActivity : ComponentActivity() {
                                 CurrentScreen.Explore -> Navigation.RouteExplore.ExploreScreen
                                 CurrentScreen.Home -> Navigation.RouteHome.HomeScreen
                                 CurrentScreen.Library -> Navigation.RouteLibrary.LibraryScreen
+                                CurrentScreen.Account -> Navigation.Account
                             }
 
                             navigationController.navigate(route = targetScreen)
@@ -85,6 +88,8 @@ class MainActivity : ComponentActivity() {
 
                                 libraryImpl()
                             }
+
+                            accountImpl()
                         }
                     )
                 }
