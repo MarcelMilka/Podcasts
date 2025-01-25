@@ -17,7 +17,7 @@ import com.application.podcasts.main.home.habitTracker.ui.impl.habitTrackerImpl
 import com.application.podcasts.main.home.podcasts.ui.impl.podcastsImpl
 import com.application.podcasts.main.library.ui.impl.libraryImpl
 import com.application.podcasts.sharedUI.commonComponents.screenNavigationBar.ScreenNavigationBar
-import com.application.podcasts.sharedUI.commonComponents.subscreenNavigationBar.SubscreenNavigationBar
+import com.application.podcasts.subscreenNavigationBar.ui.impl.SubscreenNavigationBarImpl
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -36,14 +36,16 @@ class MainActivity : ComponentActivity() {
 
                 topBar = {
 
-                    SubscreenNavigationBar()
+                    SubscreenNavigationBarImpl(
+                        navigationController = navigationController
+                    )
                 },
 
                 bottomBar = {
 
                     ScreenNavigationBar(
 
-                        flowOfNavBackStackEntry = navigationController.currentBackStackEntryFlow,
+                        currentBackStackEntryFlow = navigationController.currentBackStackEntryFlow,
 
                         onNavigate = {
 

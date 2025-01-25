@@ -1,6 +1,5 @@
 package com.application.podcasts.sharedUI.commonComponents.screenNavigationBar
 
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Cloud
@@ -12,13 +11,13 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
 import com.application.podcasts.constants.values.Padding
 import com.application.podcasts.constants.navigation.CurrentScreen
-import com.application.podcasts.constants.navigation.convertToEnumCurrentScreen
+import com.application.podcasts.constants.navigation.convertToCurrentScreen
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 @Composable
 fun ScreenNavigationBar(
-    flowOfNavBackStackEntry: Flow<NavBackStackEntry>,
+    currentBackStackEntryFlow: Flow<NavBackStackEntry>,
     onNavigate: (CurrentScreen) -> Unit
 ) {
 
@@ -28,18 +27,16 @@ fun ScreenNavigationBar(
     }
 
 //  When a user navigates back using the smartphone's built-in back button, automatically update the UI to reflect the current screen.
-    LaunchedEffect(flowOfNavBackStackEntry) {
+    LaunchedEffect(currentBackStackEntryFlow) {
 
-        flowOfNavBackStackEntry
+        currentBackStackEntryFlow
             .map { backStackEntry ->
-
-                Log.d("Halla!", "$backStackEntry")
 
                 backStackEntry
                     .destination
                     .toString()
                     .substringAfterLast(".")
-                    .convertToEnumCurrentScreen()
+                    .convertToCurrentScreen()
             }
             .collect { currentDestination ->
 

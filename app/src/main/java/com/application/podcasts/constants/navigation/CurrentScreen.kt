@@ -6,7 +6,7 @@ enum class CurrentScreen {
     Library
 }
 
-fun String.convertToEnumCurrentScreen(): CurrentScreen? =
+fun String.convertToCurrentScreen(): CurrentScreen? =
     when(this) {
 
         "Explore" -> CurrentScreen.Explore
