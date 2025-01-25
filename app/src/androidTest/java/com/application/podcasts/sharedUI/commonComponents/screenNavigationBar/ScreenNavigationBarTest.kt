@@ -31,6 +31,8 @@ class ScreenNavigationBarTest {
         buttonLibrary.assertIsEnabled()
         textInLibraryScreen.assertIsNotDisplayed()
 
+        composeTestRule
+
         assertTrue(true)
     }
 

@@ -15,7 +15,7 @@ import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 class SubscreenNavigationBarViewModel(
-    private val currentBackStackEntryFlow: Flow<NavBackStackEntry>
+    private val currentBackStackEntryFlow: Flow<String>
 ): ViewModel() {
 
     private var _uiState = MutableStateFlow(SubscreenNavigationBarViewState())
@@ -30,15 +30,11 @@ class SubscreenNavigationBarViewModel(
 
                     val screen =
                         backStackEntry
-                        .destination
-                        .toString()
                         .substringAfterLast(".")
                         .convertToCurrentScreen()
 
                     val subscreen =
                         backStackEntry
-                        .destination
-                        .toString()
                         .substringAfterLast(".")
                         .convertToCurrentSubscreen()
 

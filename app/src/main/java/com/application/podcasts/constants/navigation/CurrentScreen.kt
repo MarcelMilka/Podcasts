@@ -9,13 +9,18 @@ enum class CurrentScreen {
 
 fun String.convertToCurrentScreen(): CurrentScreen? =
     when(this) {
+
+//      Explore:
         "Search" -> CurrentScreen.Explore
         "Explore" -> CurrentScreen.Explore
         "SelectLanguage" -> CurrentScreen.Explore
         "Filter" -> CurrentScreen.Explore
-        "Podcasts" -> CurrentScreen.Home
-        "HabitTracker" -> CurrentScreen.Home
         "Library" -> CurrentScreen.Library
         "Account" -> CurrentScreen.Account
+
+//      Home:
+        "Podcasts" -> CurrentScreen.Home
+        "HabitTracker" -> CurrentScreen.Home
+
         else -> null
     }
