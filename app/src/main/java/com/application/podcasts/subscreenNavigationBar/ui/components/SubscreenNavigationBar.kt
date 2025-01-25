@@ -2,6 +2,8 @@ package com.application.podcasts.subscreenNavigationBar.ui.components
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Person
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -16,6 +18,10 @@ import kotlinx.coroutines.flow.StateFlow
 @Composable
 fun SubscreenNavigationBar(
     stateFlowOfUiState: StateFlow<SubscreenNavigationBarViewState>,
+    onSearch: () -> Unit,
+    onExplore: () -> Unit,
+    onExploreByLanguage: () -> Unit,
+    onFilter: () -> Unit,
     onNavigateToPodcasts: () -> Unit,
     onNavigateToHabitTracker: () -> Unit,
     onNavigateToAccount: () -> Unit,
@@ -56,7 +62,30 @@ fun SubscreenNavigationBar(
 
                             CurrentScreen.Explore -> {
 
-                                SubscreenBarForExploreScreen()
+                                SubscreenBarForExploreScreen(
+
+                                    uiState = uiState,
+
+                                    onSearch = {
+
+                                        onSearch()
+                                    },
+
+                                    onExplore = {
+
+                                        onExplore()
+                                    },
+
+                                    onExploreByLanguage = {
+
+                                        onExploreByLanguage()
+                                    },
+
+                                    onFilter = {
+
+                                        onFilter()
+                                    },
+                                )
                             }
 
                             CurrentScreen.Home -> {
@@ -101,6 +130,8 @@ fun SubscreenNavigationBar(
             SubscreenNavigationBarIconButton(
                 isActive = uiState.currentScreen == CurrentScreen.Account,
                 isEnabled = uiState.currentScreen != CurrentScreen.Account,
+                icon = Icons.Rounded.Person,
+                testTag = "IconButtonAccount",
                 onClick = {
 
                     onNavigateToAccount()

@@ -1,5 +1,6 @@
 package com.application.podcasts.subscreenNavigationBar.ui.impl
 
+import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import com.application.podcasts.constants.navigation.Navigation
@@ -17,6 +18,34 @@ fun SubscreenNavigationBarImpl(navigationController: NavHostController) {
     SubscreenNavigationBar(
 
         stateFlowOfUiState = subscreenNavigationBarViewModel.uiState,
+
+        onSearch = {
+
+            navigationController.navigate(
+                route = Navigation.RouteExplore.Search
+            )
+        },
+
+        onExplore = {
+
+            navigationController.navigate(
+                route = Navigation.RouteExplore.Explore
+            )
+        },
+
+        onExploreByLanguage = {
+
+            navigationController.navigate(
+                route = Navigation.RouteExplore.SelectLanguage
+            )
+        },
+
+        onFilter = {
+
+            navigationController.navigate(
+                route = Navigation.RouteExplore.Filter
+            )
+        },
 
         onNavigateToPodcasts = {
 

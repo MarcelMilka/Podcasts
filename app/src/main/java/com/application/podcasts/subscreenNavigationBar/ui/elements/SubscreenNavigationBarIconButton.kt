@@ -14,6 +14,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.application.podcasts.sharedUI.theme.DarkPrimary
 import com.application.podcasts.sharedUI.theme.DarkSecondary
@@ -22,6 +24,8 @@ import com.application.podcasts.sharedUI.theme.DarkSecondary
 fun SubscreenNavigationBarIconButton(
     isActive: Boolean,
     isEnabled: Boolean,
+    icon: ImageVector,
+    testTag: String,
     onClick: () -> Unit
 ) {
 
@@ -56,7 +60,8 @@ fun SubscreenNavigationBarIconButton(
 
         modifier = Modifier
             .width(37.dp)
-            .height(37.dp),
+            .height(37.dp)
+            .testTag(testTag),
 
         enabled = isEnabled,
 
@@ -71,7 +76,7 @@ fun SubscreenNavigationBarIconButton(
 
             Icon(
 
-                imageVector = Icons.Rounded.Person,
+                imageVector = icon,
                 contentDescription = null
             )
         }

@@ -11,16 +11,22 @@ sealed class Navigation {
         object ExploreScreen: RouteExplore()
 
         @Serializable
-        object Explore: RouteExplore()
+        object Search: RouteExplore()
 
         @Serializable
-        object ExploreByGenre: RouteExplore()
+        object Explore: RouteExplore()
 
         @Serializable
         object SelectLanguage: RouteExplore()
 
         @Serializable
         object ExploreByLanguage: RouteExplore()
+
+        @Serializable
+        object Filter: RouteExplore()
+
+        @Serializable
+        object ExploreByGenre: RouteExplore()
     }
 
     @Serializable
