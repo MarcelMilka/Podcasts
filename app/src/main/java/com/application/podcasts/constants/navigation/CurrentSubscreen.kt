@@ -18,16 +18,16 @@ fun String.convertToCurrentSubscreen(): CurrentSubscreen? =
     when(this) {
 
 //      Explore:
-        "Search" -> CurrentSubscreen.Search
-        "Explore" -> CurrentSubscreen.Explore
-        "SelectLanguage" -> CurrentSubscreen.SelectLanguage
-        "ExploreByLanguage" -> CurrentSubscreen.ExploreByLanguage
-        "Filter" -> CurrentSubscreen.Filter
-        "ExploreByGenre" -> CurrentSubscreen.ExploreByGenre
+        Navigation.RouteExplore.Search::class.simpleName -> CurrentSubscreen.Search
+        Navigation.RouteExplore.Explore::class.simpleName -> CurrentSubscreen.Explore
+        Navigation.RouteExplore.SelectLanguage::class.simpleName -> CurrentSubscreen.SelectLanguage
+        Navigation.RouteExplore.ExploreByLanguage::class.simpleName -> CurrentSubscreen.ExploreByLanguage
+        Navigation.RouteExplore.Filter::class.simpleName -> CurrentSubscreen.Filter
+        Navigation.RouteExplore.ExploreByGenre::class.simpleName -> CurrentSubscreen.ExploreByGenre
 
 //      Home:
-        "Podcasts" -> CurrentSubscreen.Podcasts
-        "HabitTracker" -> CurrentSubscreen.HabitTracker
+        Navigation.RouteHome.Podcasts::class.simpleName -> CurrentSubscreen.Podcasts
+        Navigation.RouteHome.HabitTracker::class.simpleName -> CurrentSubscreen.HabitTracker
 
         else -> null
     }

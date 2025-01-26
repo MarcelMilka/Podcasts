@@ -1,8 +1,10 @@
 package com.application.podcasts.subscreenNavigationBar.vm
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavBackStackEntry
+import com.application.podcasts.constants.navigation.Navigation
 import com.application.podcasts.constants.navigation.convertToCurrentScreen
 import com.application.podcasts.constants.navigation.convertToCurrentSubscreen
 import com.application.podcasts.subscreenNavigationBar.business.CurrentLocation
@@ -23,6 +25,8 @@ class SubscreenNavigationBarViewModel(
 
     init {
 
+        Log.d("Halla!", "${Navigation.Account::class.simpleName}")
+
         viewModelScope.launch {
 
             currentBackStackEntryFlow
@@ -31,6 +35,7 @@ class SubscreenNavigationBarViewModel(
                     val screen =
                         backStackEntry
                         .destination
+                        .route
                         .toString()
                         .substringAfterLast(".")
                         .convertToCurrentScreen()
@@ -38,6 +43,7 @@ class SubscreenNavigationBarViewModel(
                     val subscreen =
                         backStackEntry
                         .destination
+                        .route
                         .toString()
                         .substringAfterLast(".")
                         .convertToCurrentSubscreen()
