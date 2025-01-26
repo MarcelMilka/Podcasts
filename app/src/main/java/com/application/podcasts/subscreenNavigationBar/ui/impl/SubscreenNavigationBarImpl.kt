@@ -2,17 +2,23 @@ package com.application.podcasts.subscreenNavigationBar.ui.impl
 
 import android.util.Log
 import androidx.compose.runtime.Composable
+import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.application.podcasts.constants.navigation.Navigation
 import com.application.podcasts.subscreenNavigationBar.ui.components.SubscreenNavigationBar
 import com.application.podcasts.subscreenNavigationBar.vm.SubscreenNavigationBarViewModel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 
 @Composable
 fun SubscreenNavigationBarImpl(navigationController: NavHostController) {
 
     val subscreenNavigationBarViewModel =
         SubscreenNavigationBarViewModel(
-            currentBackStackEntryFlow = navigationController.currentBackStackEntryFlow
+            currentBackStackEntryFlow = navigationController.currentBackStackEntryFlow.map {
+
+                it.destination.toString()
+            }
         )
 
     SubscreenNavigationBar(
