@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.lifecycle.compose.LifecycleEventEffect
 import com.application.podcasts.sharedUI.commonElements.PrimaryLabel
 import com.application.podcasts.sharedUI.theme.DarkBackground
 

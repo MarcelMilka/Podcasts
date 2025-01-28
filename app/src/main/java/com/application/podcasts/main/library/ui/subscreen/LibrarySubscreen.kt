@@ -24,7 +24,7 @@ fun LibrarySubscreen() {
 
         content = {
 
-            PrimaryLabel(content = "Screen 'Library'")
+            PrimaryLabel(content = "Screen 'Library' -> 'Library'")
         }
     )
 }

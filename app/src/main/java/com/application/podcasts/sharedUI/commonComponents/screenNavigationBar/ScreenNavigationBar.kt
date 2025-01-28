@@ -1,46 +1,44 @@
 package com.application.podcasts.sharedUI.commonComponents.screenNavigationBar
 
-import android.util.Log
 import androidx.compose.foundation.layout.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Cloud
 import androidx.compose.material.icons.rounded.Explore
 import androidx.compose.material.icons.rounded.Home
 import androidx.compose.runtime.*
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavBackStackEntry
-import com.application.podcasts.constants.Padding
-import com.application.podcasts.constants.navigation.screens.CurrentScreen
-import com.application.podcasts.constants.navigation.screens.convertToEnumCurrentScreen
+import com.application.podcasts.constants.values.Padding
+import com.application.podcasts.constants.navigation.CurrentScreen
+import com.application.podcasts.constants.navigation.convertToCurrentScreen
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
 @Composable
 fun ScreenNavigationBar(
-    flowOfNavBackStackEntry: Flow<NavBackStackEntry>,
+    currentBackStackEntryFlow: Flow<NavBackStackEntry>,
     onNavigate: (CurrentScreen) -> Unit
 ) {
 
     var currentScreen by remember {
 
-        mutableStateOf(CurrentScreen.Home)
+        mutableStateOf(CurrentScreen.HomeScreen)
     }
 
 //  When a user navigates back using the smartphone's built-in back button, automatically update the UI to reflect the current screen.
-    LaunchedEffect(flowOfNavBackStackEntry) {
+    LaunchedEffect(currentBackStackEntryFlow) {
 
-        flowOfNavBackStackEntry
+        currentBackStackEntryFlow
             .map { backStackEntry ->
-
-                Log.d("Halla!", "$backStackEntry")
 
                 backStackEntry
                     .destination
+                    .route
                     .toString()
+                    .substringBeforeLast(".")
                     .substringAfterLast(".")
-                    .convertToEnumCurrentScreen()
+                    .convertToCurrentScreen()
             }
             .collect { currentDestination ->
 
@@ -71,9 +69,9 @@ fun ScreenNavigationBar(
         content = {
 
             mapOf(
-                CurrentScreen.Explore to Icons.Rounded.Explore to "Bottom bar icon button explore",
-                CurrentScreen.Home to Icons.Rounded.Home to "Bottom bar icon button home",
-                CurrentScreen.Library to Icons.Rounded.Cloud to "Bottom bar icon button library",
+                CurrentScreen.ExploreScreen to Icons.Rounded.Explore to "Bottom bar icon button explore",
+                CurrentScreen.HomeScreen to Icons.Rounded.Home to "Bottom bar icon button home",
+                CurrentScreen.LibraryScreen to Icons.Rounded.Cloud to "Bottom bar icon button library",
             ).forEach {
 
                 ScreenNavigationBarIcon(
