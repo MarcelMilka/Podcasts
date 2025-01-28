@@ -4,6 +4,7 @@ import androidx.navigation.NavBackStackEntry
 import app.cash.turbine.test
 import com.application.podcasts.constants.navigation.CurrentScreen
 import com.application.podcasts.constants.navigation.CurrentSubscreen
+import com.application.podcasts.subscreenNavigationBar.business.SubscreenNavigationBarErrorMessages
 import com.application.podcasts.subscreenNavigationBar.business.SubscreenNavigationBarViewState
 import com.application.testHelpers.MainDispatcherRule
 import io.mockk.coEvery
@@ -34,21 +35,41 @@ class SubscreenNavigationBarViewModelTest {
 
         val currentBackStackEntryFlow = flow<NavBackStackEntry> {
 
-//          1.
+//          1. Home -> Podcasts
             emit(TestHelpingObject.subscreenPodcasts)
             delay(400)
 
-//          2.
+//          2. Explore -> Explore
             emit(TestHelpingObject.subscreenExplore)
             delay(1000)
 
-//          3:
+//          3: Account -> Account
             emit(TestHelpingObject.subscreenAccount)
             delay(2000)
 
-//          4:
+//          4: Library -> Library
             emit(TestHelpingObject.subscreenLibrary)
             delay(5000)
+
+//          5: Wrong route
+            emit(TestHelpingObject.wrongRoute)
+            delay(150)
+
+//          6. Home -> Podcasts
+            emit(TestHelpingObject.subscreenPodcasts)
+            delay(400)
+
+//          7. Home -> HabitTracker
+            emit(TestHelpingObject.subscreenHabitTracker)
+            delay(400)
+
+//          8. Wrong subscreen
+            emit(TestHelpingObject.wrongSubscreen)
+            delay(400)
+
+//          9. Wrong route and subscreen
+            emit(TestHelpingObject.wrongRouteAndSubscreen)
+            delay(400)
         }
 
         subscreenNavigationBarViewModel = SubscreenNavigationBarViewModel(
@@ -58,25 +79,45 @@ class SubscreenNavigationBarViewModelTest {
 
     @OptIn(ExperimentalCoroutinesApi::class)
     @Test
-    fun `Navigating between screens works as intended`() = runTest(StandardTestDispatcher()) {
+    fun `Navigating between screens and subscreens works as intended, errors are handled properly`() = runTest(StandardTestDispatcher()) {
 
         subscreenNavigationBarViewModel.viewState.test {
 
-//          1.
+//          1. Home -> Podcasts
             advanceUntilIdle()
             assertEquals(TestHelpingObject.podcastsViewState, awaitItem())
 
-//          2.
+//          2. Explore -> Explore
             advanceUntilIdle()
             assertEquals(TestHelpingObject.exploreViewState, awaitItem())
 
-//          3.
+//          3: Account -> Account
             advanceUntilIdle()
             assertEquals(TestHelpingObject.accountViewState, awaitItem())
 
-//          4.
+//          4: Library -> Library
             advanceUntilIdle()
             assertEquals(TestHelpingObject.libraryViewState, awaitItem())
+
+//          5: Wrong route
+            advanceUntilIdle()
+            assertEquals(TestHelpingObject.wrongRouteViewState, awaitItem())
+
+//          6. Home -> Podcasts
+            advanceUntilIdle()
+            assertEquals(TestHelpingObject.podcastsViewState, awaitItem())
+
+//          7. Home -> HabitTracker
+            advanceUntilIdle()
+            assertEquals(TestHelpingObject.habitTrackerViewState, awaitItem())
+
+//          8. Wrong subscreen
+            advanceUntilIdle()
+            assertEquals(TestHelpingObject.wrongSubscreenViewState, awaitItem())
+
+//          9. Wrong route and subscreen
+            advanceUntilIdle()
+            assertEquals(TestHelpingObject.wrongRouteAndSubscreenViewState, awaitItem())
 
             cancelAndIgnoreRemainingEvents()
         }
@@ -84,10 +125,6 @@ class SubscreenNavigationBarViewModelTest {
 }
 
 private object TestHelpingObject {
-
-//    private const val SEARCH_ROUTE = "com.application.podcasts.constants.navigation.Navigation.RouteExplore.SearchSubscreen"
-//    private const val SELECT_LANGUAGE_ROUTE = "com.application.podcasts.constants.navigation.Navigation.RouteExplore.SelectLanguageSubscreen"
-//    private const val FILTER_ROUTE = "com.application.podcasts.constants.navigation.Navigation.RouteExplore.SelectLanguageSubscreen"
 
 //  Home
     private const val PODCASTS_ROUTE = "com.application.podcasts.constants.navigation.Navigation.RouteHome.PodcastsSubscreen"
@@ -115,6 +152,30 @@ private object TestHelpingObject {
         causeOfError = null
     )
 
+    private const val SEARCH_ROUTE = "com.application.podcasts.constants.navigation.Navigation.RouteExplore.SearchSubscreen"
+    val subscreenSearch = mockk<NavBackStackEntry>(relaxed = true)
+    val searchViewState = SubscreenNavigationBarViewState(
+        currentScreen = CurrentScreen.ExploreScreen,
+        currentSubscreen = CurrentSubscreen.SearchSubscreen,
+        causeOfError = null
+    )
+
+    private const val SELECT_LANGUAGE_ROUTE = "com.application.podcasts.constants.navigation.Navigation.RouteExplore.SelectLanguageSubscreen"
+    val subscreenSelectLanguage = mockk<NavBackStackEntry>(relaxed = true)
+    val selectLanguageViewState = SubscreenNavigationBarViewState(
+        currentScreen = CurrentScreen.ExploreScreen,
+        currentSubscreen = CurrentSubscreen.SelectLanguageSubscreen,
+        causeOfError = null
+    )
+
+    private const val SELECT_LANGUAGE = "com.application.podcasts.constants.navigation.Navigation.RouteExplore.FilterSubscreen"
+    val subscreenFilter = mockk<NavBackStackEntry>(relaxed = true)
+    val filterViewState = SubscreenNavigationBarViewState(
+        currentScreen = CurrentScreen.ExploreScreen,
+        currentSubscreen = CurrentSubscreen.SelectLanguageSubscreen,
+        causeOfError = null
+    )
+
 //  Account
     private const val ACCOUNT_ROUTE = "com.application.podcasts.constants.navigation.Navigation.RouteAccount.AccountSubscreen"
     val subscreenAccount = mockk<NavBackStackEntry>(relaxed = true)
@@ -133,6 +194,33 @@ private object TestHelpingObject {
         causeOfError = null
     )
 
+//  Wrong route
+    private const val WRONG_ROUTE = "com.application.podcasts.constants.navigation.Navigation.WrongRoute.LibrarySubscreen"
+    val wrongRoute = mockk<NavBackStackEntry>(relaxed = true)
+    val wrongRouteViewState = SubscreenNavigationBarViewState(
+        currentScreen = null,
+        currentSubscreen = CurrentSubscreen.LibrarySubscreen,
+        causeOfError = SubscreenNavigationBarErrorMessages.CURRENT_SCREEN_IS_NULL
+    )
+
+//  Wrong subscreen
+    private const val WRONG_SUBSCREEN = "com.application.podcasts.constants.navigation.Navigation.RouteLibrary.WrongSubscreen"
+    val wrongSubscreen = mockk<NavBackStackEntry>(relaxed = true)
+    val wrongSubscreenViewState = SubscreenNavigationBarViewState(
+        currentScreen = CurrentScreen.LibraryScreen,
+        currentSubscreen = null,
+        causeOfError = SubscreenNavigationBarErrorMessages.CURRENT_SUBSCREEN_IS_NULL
+    )
+
+//  Wrong screen and subscreen
+    private const val WRONG_SCREEN_AND_SUBSCREEN = "com.application.podcasts.constants.navigation.Navigation.WrongRoute.WrongSubscreen"
+    val wrongRouteAndSubscreen = mockk<NavBackStackEntry>(relaxed = true)
+    val wrongRouteAndSubscreenViewState = SubscreenNavigationBarViewState(
+        currentScreen = null,
+        currentSubscreen = null,
+        causeOfError = SubscreenNavigationBarErrorMessages.CURRENT_SCREEN_AND_SUBSCREEN_ARE_NULL
+    )
+
     init {
 
         coEvery { subscreenPodcasts.destination.route } returns PODCASTS_ROUTE
@@ -144,5 +232,11 @@ private object TestHelpingObject {
         coEvery { subscreenAccount.destination.route } returns ACCOUNT_ROUTE
 
         coEvery { subscreenLibrary.destination.route } returns LIBRARY_ROUTE
+
+        coEvery { wrongRoute.destination.route } returns WRONG_ROUTE
+
+        coEvery { wrongSubscreen.destination.route } returns WRONG_SUBSCREEN
+
+        coEvery { wrongRouteAndSubscreen.destination.route } returns WRONG_SCREEN_AND_SUBSCREEN
     }
 }

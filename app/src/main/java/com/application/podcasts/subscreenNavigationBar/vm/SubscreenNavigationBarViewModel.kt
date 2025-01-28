@@ -1,6 +1,5 @@
 package com.application.podcasts.subscreenNavigationBar.vm
 
-import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavBackStackEntry
@@ -34,6 +33,7 @@ class SubscreenNavigationBarViewModel(
                         .destination
                         .route
                         .toString()
+                        .substringBeforeLast(".")
                         .substringAfterLast(".")
                         .convertToCurrentScreen()
 
@@ -81,10 +81,5 @@ class SubscreenNavigationBarViewModel(
                         )
                 }
         }
-
-//        viewModelScope.launch {
-//
-//            viewState.collect { Log.d("Halla!", "${it.currentScreen} - ${it.currentSubscreen} - ${it.causeOfError}") }
-//        }
     }
 }

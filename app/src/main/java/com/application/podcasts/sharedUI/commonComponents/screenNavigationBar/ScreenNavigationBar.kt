@@ -34,7 +34,9 @@ fun ScreenNavigationBar(
 
                 backStackEntry
                     .destination
+                    .route
                     .toString()
+                    .substringBeforeLast(".")
                     .substringAfterLast(".")
                     .convertToCurrentScreen()
             }
