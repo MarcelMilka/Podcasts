@@ -9,7 +9,7 @@ import com.application.podcasts.main.explore.search.ui.subscreen.SearchSubscreen
 
 fun NavGraphBuilder.searchImpl() {
 
-    composable<Navigation.RouteExplore.Search>(
+    composable<Navigation.RouteExplore.SearchSubscreen>(
 
         enterTransition = {EnterTransition.None},
 

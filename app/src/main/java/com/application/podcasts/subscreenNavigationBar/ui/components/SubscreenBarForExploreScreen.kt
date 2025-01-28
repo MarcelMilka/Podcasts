@@ -23,8 +23,8 @@ fun LazyItemScope.SubscreenBarForExploreScreen(
 ) {
 
     SubscreenNavigationBarIconButton(
-        isActive = uiState.currentSubscreen == CurrentSubscreen.Search,
-        isEnabled = uiState.currentSubscreen != CurrentSubscreen.Search,
+        isActive = uiState.currentSubscreen == CurrentSubscreen.SearchSubscreen,
+        isEnabled = uiState.currentSubscreen != CurrentSubscreen.SearchSubscreen,
         icon = Icons.Rounded.Search,
         testTag = "IconButtonSearch",
         onClick = {
@@ -36,8 +36,8 @@ fun LazyItemScope.SubscreenBarForExploreScreen(
     Spacer(Modifier.width(5.dp))
 
     SubscreenNavigationBarButton(
-        isActive = uiState.currentSubscreen == CurrentSubscreen.Explore,
-        isEnabled = uiState.currentSubscreen != CurrentSubscreen.Explore,
+        isActive = uiState.currentSubscreen == CurrentSubscreen.ExploreSubscreen,
+        isEnabled = uiState.currentSubscreen != CurrentSubscreen.ExploreSubscreen,
         content = "Explore",
         onClick = {
 
@@ -48,8 +48,8 @@ fun LazyItemScope.SubscreenBarForExploreScreen(
     Spacer(Modifier.width(5.dp))
 
     SubscreenNavigationBarButton(
-        isActive = uiState.currentSubscreen == CurrentSubscreen.SelectLanguage,
-        isEnabled = uiState.currentSubscreen != CurrentSubscreen.SelectLanguage,
+        isActive = uiState.currentSubscreen == CurrentSubscreen.SelectLanguageSubscreen,
+        isEnabled = uiState.currentSubscreen != CurrentSubscreen.SelectLanguageSubscreen,
         content = "Explore by language",
         onClick = {
 
@@ -60,8 +60,8 @@ fun LazyItemScope.SubscreenBarForExploreScreen(
     Spacer(Modifier.width(5.dp))
 
     SubscreenNavigationBarButton(
-        isActive = uiState.currentSubscreen == CurrentSubscreen.Filter,
-        isEnabled = uiState.currentSubscreen != CurrentSubscreen.Filter,
+        isActive = uiState.currentSubscreen == CurrentSubscreen.FilterSubscreen,
+        isEnabled = uiState.currentSubscreen != CurrentSubscreen.FilterSubscreen,
         content = "Filter",
         onClick = {
 

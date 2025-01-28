@@ -1,76 +1,69 @@
 package com.application.podcasts.subscreenNavigationBar.ui.impl
 
-import android.util.Log
 import androidx.compose.runtime.Composable
-import androidx.navigation.NavBackStackEntry
 import androidx.navigation.NavHostController
 import com.application.podcasts.constants.navigation.Navigation
 import com.application.podcasts.subscreenNavigationBar.ui.components.SubscreenNavigationBar
 import com.application.podcasts.subscreenNavigationBar.vm.SubscreenNavigationBarViewModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
 
 @Composable
-fun SubscreenNavigationBarImpl(navigationController: NavHostController) {
+fun SubscreenNavigationBarImpl(navHostController: NavHostController) {
 
     val subscreenNavigationBarViewModel =
         SubscreenNavigationBarViewModel(
-            currentBackStackEntryFlow = navigationController.currentBackStackEntryFlow.map {
-
-                it.destination.toString()
-            }
+            currentBackStackEntryFlow = navHostController.currentBackStackEntryFlow
         )
 
     SubscreenNavigationBar(
 
-        stateFlowOfUiState = subscreenNavigationBarViewModel.uiState,
+        stateFlowOfUiState = subscreenNavigationBarViewModel.viewState,
 
         onSearch = {
 
-            navigationController.navigate(
-                route = Navigation.RouteExplore.Search
+            navHostController.navigate(
+                route = Navigation.RouteExplore.SearchSubscreen
             )
         },
 
         onExplore = {
 
-            navigationController.navigate(
-                route = Navigation.RouteExplore.Explore
+            navHostController.navigate(
+                route = Navigation.RouteExplore.ExploreSubscreen
             )
         },
 
         onExploreByLanguage = {
 
-            navigationController.navigate(
-                route = Navigation.RouteExplore.SelectLanguage
+            navHostController.navigate(
+                route = Navigation.RouteExplore.SelectLanguageSubscreen
             )
         },
 
         onFilter = {
 
-            navigationController.navigate(
-                route = Navigation.RouteExplore.Filter
+            navHostController.navigate(
+                route = Navigation.RouteExplore.FilterSubscreen
             )
         },
 
         onNavigateToPodcasts = {
 
-            navigationController.navigate(
-                route = Navigation.RouteHome.Podcasts
+            navHostController.navigate(
+                route = Navigation.RouteHome.PodcastsSubscreen
             )
         },
 
         onNavigateToHabitTracker = {
 
-            navigationController.navigate(
-                route = Navigation.RouteHome.HabitTracker
+            navHostController.navigate(
+                route = Navigation.RouteHome.HabitTrackerSubscreen
             )
         },
 
         onNavigateToAccount = {
 
-            navigationController.navigate(
-                route = Navigation.Account
+            navHostController.navigate(
+                route = Navigation.RouteAccount.AccountSubscreen
             )
         }
     )

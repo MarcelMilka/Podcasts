@@ -2,32 +2,44 @@ package com.application.podcasts.constants.navigation
 
 sealed class CurrentSubscreen {
 //  Explore:
-    object Search: CurrentSubscreen()
-    object Explore: CurrentSubscreen()
-    object SelectLanguage: CurrentSubscreen()
-    object ExploreByLanguage: CurrentSubscreen()
-    object Filter: CurrentSubscreen()
-    object ExploreByGenre: CurrentSubscreen()
+    object SearchSubscreen: CurrentSubscreen()
+    object ExploreSubscreen: CurrentSubscreen()
+    object SelectLanguageSubscreen: CurrentSubscreen()
+    object ExploreByLanguageSubscreen: CurrentSubscreen()
+    object FilterSubscreen: CurrentSubscreen()
+    object ExploreByGenreSubscreen: CurrentSubscreen()
 
 //  Home:
-    object Podcasts: CurrentSubscreen()
-    object HabitTracker: CurrentSubscreen()
+    object PodcastsSubscreen: CurrentSubscreen()
+    object HabitTrackerSubscreen: CurrentSubscreen()
+
+//  Account:
+    object LibrarySubscreen: CurrentSubscreen()
+
+//  Account:
+    object AccountSubscreen: CurrentSubscreen()
 }
 
 fun String.convertToCurrentSubscreen(): CurrentSubscreen? =
     when(this) {
 
 //      Explore:
-        Navigation.RouteExplore.Search::class.simpleName -> CurrentSubscreen.Search
-        Navigation.RouteExplore.Explore::class.simpleName -> CurrentSubscreen.Explore
-        Navigation.RouteExplore.SelectLanguage::class.simpleName -> CurrentSubscreen.SelectLanguage
-        Navigation.RouteExplore.ExploreByLanguage::class.simpleName -> CurrentSubscreen.ExploreByLanguage
-        Navigation.RouteExplore.Filter::class.simpleName -> CurrentSubscreen.Filter
-        Navigation.RouteExplore.ExploreByGenre::class.simpleName -> CurrentSubscreen.ExploreByGenre
+        Navigation.RouteExplore.SearchSubscreen::class.simpleName -> CurrentSubscreen.SearchSubscreen
+        Navigation.RouteExplore.ExploreSubscreen::class.simpleName -> CurrentSubscreen.ExploreSubscreen
+        Navigation.RouteExplore.SelectLanguageSubscreen::class.simpleName -> CurrentSubscreen.SelectLanguageSubscreen
+        Navigation.RouteExplore.ExploreByLanguageSubscreen::class.simpleName -> CurrentSubscreen.ExploreByLanguageSubscreen
+        Navigation.RouteExplore.FilterSubscreen::class.simpleName -> CurrentSubscreen.FilterSubscreen
+        Navigation.RouteExplore.ExploreByGenreSubscreen::class.simpleName -> CurrentSubscreen.ExploreByGenreSubscreen
 
 //      Home:
-        Navigation.RouteHome.Podcasts::class.simpleName -> CurrentSubscreen.Podcasts
-        Navigation.RouteHome.HabitTracker::class.simpleName -> CurrentSubscreen.HabitTracker
+        Navigation.RouteHome.PodcastsSubscreen::class.simpleName -> CurrentSubscreen.PodcastsSubscreen
+        Navigation.RouteHome.HabitTrackerSubscreen::class.simpleName -> CurrentSubscreen.HabitTrackerSubscreen
+
+//      Library
+        Navigation.RouteLibrary.LibrarySubscreen::class.simpleName -> CurrentSubscreen.LibrarySubscreen
+
+//      Account
+        Navigation.RouteAccount.AccountSubscreen::class.simpleName -> CurrentSubscreen.AccountSubscreen
 
         else -> null
     }

@@ -9,7 +9,7 @@ import com.application.podcasts.main.account.ui.subscreen.AccountScreen
 
 fun NavGraphBuilder.accountImpl() {
 
-    composable<Navigation.Account>(
+    composable<Navigation.RouteAccount.AccountSubscreen>(
 
         enterTransition = {EnterTransition.None},
 

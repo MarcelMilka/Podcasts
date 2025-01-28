@@ -8,7 +8,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
-import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.application.podcasts.constants.navigation.Navigation
@@ -32,7 +31,7 @@ class MainActivity : ComponentActivity() {
 
         setContent {
 
-            val navigationController = rememberNavController()
+            val navHostController = rememberNavController()
 
             Scaffold(
 
@@ -42,7 +41,7 @@ class MainActivity : ComponentActivity() {
                 topBar = {
 
                     SubscreenNavigationBarImpl(
-                        navigationController = navigationController
+                        navHostController = navHostController
                     )
                 },
 
@@ -50,18 +49,18 @@ class MainActivity : ComponentActivity() {
 
                     ScreenNavigationBar(
 
-                        currentBackStackEntryFlow = navigationController.currentBackStackEntryFlow,
+                        currentBackStackEntryFlow = navHostController.currentBackStackEntryFlow,
 
                         onNavigate = {
 
                             val targetScreen = when(it) {
-                                CurrentScreen.Explore -> Navigation.RouteExplore.ExploreScreen
-                                CurrentScreen.Home -> Navigation.RouteHome.HomeScreen
-                                CurrentScreen.Library -> Navigation.RouteLibrary.LibraryScreen
-                                CurrentScreen.Account -> Navigation.Account
+                                CurrentScreen.ExploreScreen -> Navigation.RouteExplore.ExploreScreen
+                                CurrentScreen.HomeScreen -> Navigation.RouteHome.HomeScreen
+                                CurrentScreen.LibraryScreen -> Navigation.RouteLibrary.LibraryScreen
+                                CurrentScreen.AccountScreen -> Navigation.RouteAccount.AccountScreen
                             }
 
-                            navigationController.navigate(route = targetScreen)
+                            navHostController.navigate(route = targetScreen)
                         }
                     )
                 },
@@ -70,19 +69,19 @@ class MainActivity : ComponentActivity() {
 
                     NavHost(
 
-                        navController = navigationController,
+                        navController = navHostController,
                         startDestination = Navigation.RouteHome.HomeScreen,
 
                         builder = {
 
-                            navigation<Navigation.RouteHome.HomeScreen>(startDestination = Navigation.RouteHome.Podcasts) {
+                            navigation<Navigation.RouteHome.HomeScreen>(startDestination = Navigation.RouteHome.PodcastsSubscreen) {
 
                                 podcastsImpl()
 
                                 habitTrackerImpl()
                             }
 
-                            navigation<Navigation.RouteExplore.ExploreScreen>(startDestination = Navigation.RouteExplore.Explore) {
+                            navigation<Navigation.RouteExplore.ExploreScreen>(startDestination = Navigation.RouteExplore.ExploreSubscreen) {
 
                                 searchImpl()
 
@@ -93,12 +92,16 @@ class MainActivity : ComponentActivity() {
                                 filterImpl()
                             }
 
-                            navigation<Navigation.RouteLibrary.LibraryScreen>(startDestination = Navigation.RouteLibrary.Library) {
+                            navigation<Navigation.RouteLibrary.LibraryScreen>(startDestination = Navigation.RouteLibrary.LibrarySubscreen) {
 
                                 libraryImpl()
                             }
 
-                            accountImpl()
+                            navigation<Navigation.RouteAccount.AccountScreen>(startDestination = Navigation.RouteAccount.AccountSubscreen) {
+
+
+                                accountImpl()
+                            }
                         }
                     )
                 }

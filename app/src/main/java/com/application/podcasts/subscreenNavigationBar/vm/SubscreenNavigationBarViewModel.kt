@@ -4,7 +4,6 @@ import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavBackStackEntry
-import com.application.podcasts.constants.navigation.Navigation
 import com.application.podcasts.constants.navigation.convertToCurrentScreen
 import com.application.podcasts.constants.navigation.convertToCurrentSubscreen
 import com.application.podcasts.subscreenNavigationBar.business.CurrentLocation
@@ -20,12 +19,10 @@ class SubscreenNavigationBarViewModel(
     private val currentBackStackEntryFlow: Flow<NavBackStackEntry>
 ): ViewModel() {
 
-    private var _uiState = MutableStateFlow(SubscreenNavigationBarViewState())
-    val uiState = _uiState.asStateFlow()
+    private var _viewState = MutableStateFlow(SubscreenNavigationBarViewState())
+    val viewState = _viewState.asStateFlow()
 
     init {
-
-        Log.d("Halla!", "${Navigation.Account::class.simpleName}")
 
         viewModelScope.launch {
 
@@ -74,7 +71,7 @@ class SubscreenNavigationBarViewModel(
 
                     currentLocation.subscreen ?: SubscreenNavigationBarErrorMessages.CURRENT_SCREEN_IS_NULL
 
-                    _uiState
+                    _viewState
                         .emit(
                             SubscreenNavigationBarViewState(
                                 currentScreen = currentLocation.screen,
@@ -84,5 +81,10 @@ class SubscreenNavigationBarViewModel(
                         )
                 }
         }
+
+//        viewModelScope.launch {
+//
+//            viewState.collect { Log.d("Halla!", "${it.currentScreen} - ${it.currentSubscreen} - ${it.causeOfError}") }
+//        }
     }
 }

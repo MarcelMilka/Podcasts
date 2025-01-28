@@ -24,7 +24,7 @@ fun AccountScreen() {
 
         content = {
 
-            PrimaryLabel(content = "Screen 'Account'")
+            PrimaryLabel(content = "Screen 'Account' -> 'Account'")
         }
     )
 }

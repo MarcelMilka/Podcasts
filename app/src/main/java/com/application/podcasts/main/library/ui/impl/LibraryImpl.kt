@@ -9,7 +9,7 @@ import com.application.podcasts.main.library.ui.subscreen.LibrarySubscreen
 
 fun NavGraphBuilder.libraryImpl() {
 
-    composable<Navigation.RouteLibrary.Library>(
+    composable<Navigation.RouteLibrary.LibrarySubscreen>(
 
         enterTransition = { EnterTransition.None},
 

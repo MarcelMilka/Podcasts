@@ -23,7 +23,7 @@ fun ScreenNavigationBar(
 
     var currentScreen by remember {
 
-        mutableStateOf(CurrentScreen.Home)
+        mutableStateOf(CurrentScreen.HomeScreen)
     }
 
 //  When a user navigates back using the smartphone's built-in back button, automatically update the UI to reflect the current screen.
@@ -67,9 +67,9 @@ fun ScreenNavigationBar(
         content = {
 
             mapOf(
-                CurrentScreen.Explore to Icons.Rounded.Explore to "Bottom bar icon button explore",
-                CurrentScreen.Home to Icons.Rounded.Home to "Bottom bar icon button home",
-                CurrentScreen.Library to Icons.Rounded.Cloud to "Bottom bar icon button library",
+                CurrentScreen.ExploreScreen to Icons.Rounded.Explore to "Bottom bar icon button explore",
+                CurrentScreen.HomeScreen to Icons.Rounded.Home to "Bottom bar icon button home",
+                CurrentScreen.LibraryScreen to Icons.Rounded.Cloud to "Bottom bar icon button library",
             ).forEach {
 
                 ScreenNavigationBarIcon(

@@ -7,7 +7,7 @@ import com.application.podcasts.main.home.habitTracker.ui.subscreen.habitTracker
 
 fun NavGraphBuilder.habitTrackerImpl() {
 
-    composable<Navigation.RouteHome.HabitTracker> {
+    composable<Navigation.RouteHome.HabitTrackerSubscreen> {
 
         habitTrackerSubscreen()
     }

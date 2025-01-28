@@ -9,7 +9,7 @@ import com.application.podcasts.main.explore.selectLanguage.ui.subscreen.SelectL
 
 fun NavGraphBuilder.selectLanguageImpl() {
 
-    composable<Navigation.RouteExplore.SelectLanguage>(
+    composable<Navigation.RouteExplore.SelectLanguageSubscreen>(
 
         enterTransition = {EnterTransition.None},
 

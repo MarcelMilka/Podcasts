@@ -11,22 +11,22 @@ sealed class Navigation {
         object ExploreScreen: RouteExplore()
 
         @Serializable
-        object Search: RouteExplore()
+        object SearchSubscreen: RouteExplore()
 
         @Serializable
-        object Explore: RouteExplore()
+        object ExploreSubscreen: RouteExplore()
 
         @Serializable
-        object SelectLanguage: RouteExplore()
+        object SelectLanguageSubscreen: RouteExplore()
 
         @Serializable
-        object ExploreByLanguage: RouteExplore()
+        object ExploreByLanguageSubscreen: RouteExplore()
 
         @Serializable
-        object Filter: RouteExplore()
+        object FilterSubscreen: RouteExplore()
 
         @Serializable
-        object ExploreByGenre: RouteExplore()
+        object ExploreByGenreSubscreen: RouteExplore()
     }
 
     @Serializable
@@ -36,10 +36,10 @@ sealed class Navigation {
         object HomeScreen: RouteHome()
 
         @Serializable
-        object Podcasts: RouteHome()
+        object PodcastsSubscreen: RouteHome()
 
         @Serializable
-        object HabitTracker: RouteHome()
+        object HabitTrackerSubscreen: RouteHome()
     }
 
     @Serializable
@@ -49,9 +49,16 @@ sealed class Navigation {
         object LibraryScreen: RouteLibrary()
 
         @Serializable
-        object Library: RouteLibrary()
+        object LibrarySubscreen: RouteLibrary()
     }
 
     @Serializable
-    object Account: Navigation()
+    sealed class RouteAccount: Navigation() {
+
+        @Serializable
+        object AccountScreen: RouteAccount()
+
+        @Serializable
+        object AccountSubscreen: RouteAccount()
+    }
 }

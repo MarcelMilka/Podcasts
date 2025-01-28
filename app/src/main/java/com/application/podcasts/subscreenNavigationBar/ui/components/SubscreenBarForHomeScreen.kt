@@ -18,8 +18,8 @@ fun LazyItemScope.SubscreenBarForHomeScreen(
 ) {
 
     SubscreenNavigationBarButton(
-        isActive = uiState.currentSubscreen == CurrentSubscreen.Podcasts,
-        isEnabled = uiState.currentSubscreen != CurrentSubscreen.Podcasts,
+        isActive = uiState.currentSubscreen == CurrentSubscreen.PodcastsSubscreen,
+        isEnabled = uiState.currentSubscreen != CurrentSubscreen.PodcastsSubscreen,
         content = "Podcasts",
         onClick = {
 
@@ -30,8 +30,8 @@ fun LazyItemScope.SubscreenBarForHomeScreen(
     Spacer(Modifier.width(5.dp))
 
     SubscreenNavigationBarButton(
-        isActive = uiState.currentSubscreen == CurrentSubscreen.HabitTracker,
-        isEnabled = uiState.currentSubscreen != CurrentSubscreen.HabitTracker,
+        isActive = uiState.currentSubscreen == CurrentSubscreen.HabitTrackerSubscreen,
+        isEnabled = uiState.currentSubscreen != CurrentSubscreen.HabitTrackerSubscreen,
         content = "Habit tracker",
         onClick = {
 

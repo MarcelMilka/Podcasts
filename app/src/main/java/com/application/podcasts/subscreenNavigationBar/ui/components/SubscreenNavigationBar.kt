@@ -60,7 +60,7 @@ fun SubscreenNavigationBar(
 
                         when(uiState.currentScreen) {
 
-                            CurrentScreen.Explore -> {
+                            CurrentScreen.ExploreScreen -> {
 
                                 SubscreenBarForExploreScreen(
 
@@ -88,7 +88,7 @@ fun SubscreenNavigationBar(
                                 )
                             }
 
-                            CurrentScreen.Home -> {
+                            CurrentScreen.HomeScreen -> {
 
                                 SubscreenBarForHomeScreen(
 
@@ -106,12 +106,12 @@ fun SubscreenNavigationBar(
                                 )
                             }
 
-                            CurrentScreen.Library -> {
+                            CurrentScreen.LibraryScreen -> {
 
                                 SubscreenBarForLibraryScreen()
                             }
 
-                            CurrentScreen.Account -> {
+                            CurrentScreen.AccountScreen -> {
 
                                 SubscreenBarForAccountScreen()
                             }
@@ -128,8 +128,8 @@ fun SubscreenNavigationBar(
             Spacer(modifier = Modifier.width(10.dp))
 
             SubscreenNavigationBarIconButton(
-                isActive = uiState.currentScreen == CurrentScreen.Account,
-                isEnabled = uiState.currentScreen != CurrentScreen.Account,
+                isActive = uiState.currentScreen == CurrentScreen.AccountScreen,
+                isEnabled = uiState.currentScreen != CurrentScreen.AccountScreen,
                 icon = Icons.Rounded.Person,
                 testTag = "IconButtonAccount",
                 onClick = {

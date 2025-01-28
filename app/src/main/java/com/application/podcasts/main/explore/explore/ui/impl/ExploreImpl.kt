@@ -9,7 +9,7 @@ import com.application.podcasts.main.explore.explore.ui.subscreen.ExploreSubscre
 
 fun NavGraphBuilder.exploreImpl() {
 
-    composable<Navigation.RouteExplore.Explore>(
+    composable<Navigation.RouteExplore.ExploreSubscreen>(
 
         enterTransition = { EnterTransition.None},
 
