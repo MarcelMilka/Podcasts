@@ -94,5 +94,5 @@ class ScreenNavigationBarTest {
     private val textInHomeScreen = composeTestRule.onNodeWithText("Screen 'Home' -> 'Podcasts'")
 
     private val buttonLibrary = composeTestRule.onNodeWithTag("Bottom bar icon button library")
-    private val textInLibraryScreen = composeTestRule.onNodeWithText("Screen 'Library'")
+    private val textInLibraryScreen = composeTestRule.onNodeWithText("Screen 'Library' -> 'Library'")
 }

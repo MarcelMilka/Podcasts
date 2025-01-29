@@ -11,7 +11,6 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navigation
 import com.application.podcasts.constants.navigation.Navigation
-import com.application.podcasts.constants.navigation.CurrentScreen
 import com.application.podcasts.main.account.ui.impl.accountImpl
 import com.application.podcasts.main.explore.explore.ui.impl.exploreImpl
 import com.application.podcasts.main.explore.filter.ui.impl.filterImpl
@@ -20,7 +19,7 @@ import com.application.podcasts.main.explore.selectLanguage.ui.impl.selectLangua
 import com.application.podcasts.main.home.habitTracker.ui.impl.habitTrackerImpl
 import com.application.podcasts.main.home.podcasts.ui.impl.podcastsImpl
 import com.application.podcasts.main.library.ui.impl.libraryImpl
-import com.application.podcasts.sharedUI.commonComponents.screenNavigationBar.ScreenNavigationBar
+import com.application.podcasts.screenNavigationBar.ui.impl.ScreenNavigationBarImpl
 import com.application.podcasts.subscreenNavigationBar.ui.impl.SubscreenNavigationBarImpl
 
 class MainActivity : ComponentActivity() {
@@ -47,21 +46,8 @@ class MainActivity : ComponentActivity() {
 
                 bottomBar = {
 
-                    ScreenNavigationBar(
-
-                        currentBackStackEntryFlow = navHostController.currentBackStackEntryFlow,
-
-                        onNavigate = {
-
-                            val targetScreen = when(it) {
-                                CurrentScreen.ExploreScreen -> Navigation.RouteExplore.ExploreScreen
-                                CurrentScreen.HomeScreen -> Navigation.RouteHome.HomeScreen
-                                CurrentScreen.LibraryScreen -> Navigation.RouteLibrary.LibraryScreen
-                                CurrentScreen.AccountScreen -> Navigation.RouteAccount.AccountScreen
-                            }
-
-                            navHostController.navigate(route = targetScreen)
-                        }
+                    ScreenNavigationBarImpl(
+                        navHostController = navHostController
                     )
                 },
 
@@ -98,7 +84,6 @@ class MainActivity : ComponentActivity() {
                             }
 
                             navigation<Navigation.RouteAccount.AccountScreen>(startDestination = Navigation.RouteAccount.AccountSubscreen) {
-
 
                                 accountImpl()
                             }

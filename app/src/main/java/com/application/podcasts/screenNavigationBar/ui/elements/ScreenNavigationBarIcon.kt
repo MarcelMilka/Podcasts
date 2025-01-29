@@ -1,4 +1,4 @@
-package com.application.podcasts.sharedUI.commonComponents.screenNavigationBar
+package com.application.podcasts.screenNavigationBar.ui.elements
 
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.Spring

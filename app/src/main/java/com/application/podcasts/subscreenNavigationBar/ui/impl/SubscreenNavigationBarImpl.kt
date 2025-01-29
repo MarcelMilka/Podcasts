@@ -16,7 +16,7 @@ fun SubscreenNavigationBarImpl(navHostController: NavHostController) {
 
     SubscreenNavigationBar(
 
-        stateFlowOfUiState = subscreenNavigationBarViewModel.viewState,
+        stateFlowOfViewState = subscreenNavigationBarViewModel.viewState,
 
         onSearch = {
 

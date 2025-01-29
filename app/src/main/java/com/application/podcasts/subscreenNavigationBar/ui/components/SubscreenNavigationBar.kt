@@ -17,7 +17,7 @@ import kotlinx.coroutines.flow.StateFlow
 
 @Composable
 fun SubscreenNavigationBar(
-    stateFlowOfUiState: StateFlow<SubscreenNavigationBarViewState>,
+    stateFlowOfViewState: StateFlow<SubscreenNavigationBarViewState>,
     onSearch: () -> Unit,
     onExplore: () -> Unit,
     onExploreByLanguage: () -> Unit,
@@ -27,7 +27,7 @@ fun SubscreenNavigationBar(
     onNavigateToAccount: () -> Unit,
 ) {
 
-    val uiState by stateFlowOfUiState.collectAsState()
+    val uiState by stateFlowOfViewState.collectAsState()
 
     Row(
 
