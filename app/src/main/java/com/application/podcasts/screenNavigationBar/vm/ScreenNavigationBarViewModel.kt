@@ -7,8 +7,11 @@ import com.application.podcasts.constants.navigation.CurrentScreen
 import com.application.podcasts.constants.navigation.convertToCurrentScreen
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
+import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 
 class ScreenNavigationBarViewModel(
@@ -23,6 +26,7 @@ class ScreenNavigationBarViewModel(
         viewModelScope.launch {
 
             currentBackStackEntryFlow
+                .distinctUntilChanged()
                 .map { backStackEntry ->
 
                     backStackEntry

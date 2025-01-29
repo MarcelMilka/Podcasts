@@ -11,6 +11,7 @@ import com.application.podcasts.subscreenNavigationBar.business.SubscreenNavigat
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.distinctUntilChanged
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
@@ -26,6 +27,7 @@ class SubscreenNavigationBarViewModel(
         viewModelScope.launch {
 
             currentBackStackEntryFlow
+                .distinctUntilChanged()
                 .map { backStackEntry ->
 
                     val screen =
