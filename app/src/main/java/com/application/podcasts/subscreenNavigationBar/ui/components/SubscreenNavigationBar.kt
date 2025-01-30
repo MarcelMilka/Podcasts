@@ -7,6 +7,7 @@ import androidx.compose.material.icons.rounded.Person
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.application.podcasts.constants.navigation.CurrentScreen
 import com.application.podcasts.constants.values.Padding
@@ -49,7 +50,8 @@ fun SubscreenNavigationBar(
             LazyRow(
                 modifier = Modifier
                     .weight(1f)
-                    .height(40.dp),
+                    .height(40.dp)
+                    .testTag("Lazy row of subscreen navigation bar"),
 
                 horizontalArrangement = Arrangement.Start,
                 verticalAlignment = Alignment.CenterVertically,

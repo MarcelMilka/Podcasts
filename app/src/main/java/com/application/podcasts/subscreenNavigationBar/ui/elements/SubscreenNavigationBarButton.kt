@@ -10,6 +10,7 @@ import androidx.compose.material3.ElevatedButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import com.application.podcasts.sharedUI.commonElements.PrimaryLabel
 import com.application.podcasts.sharedUI.theme.DarkPrimary
@@ -20,7 +21,8 @@ fun SubscreenNavigationBarButton(
     isActive: Boolean,
     isEnabled: Boolean,
     content: String,
-    onClick: () -> Unit
+    testTag: String,
+    onClick: () -> Unit,
 ) {
 
     val targetColor =
@@ -53,7 +55,8 @@ fun SubscreenNavigationBarButton(
         },
 
         modifier = Modifier
-            .height(37.dp),
+            .height(37.dp)
+            .testTag(testTag),
 
         enabled = isEnabled,
 

@@ -1,5 +1,6 @@
 package com.application.podcasts.screenNavigationBar.vm
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import androidx.navigation.NavBackStackEntry
@@ -28,6 +29,8 @@ class ScreenNavigationBarViewModel(
             currentBackStackEntryFlow
                 .distinctUntilChanged()
                 .map { backStackEntry ->
+
+                    Log.d("Halla!", "${backStackEntry.destination.route}")
 
                     backStackEntry
                         .destination

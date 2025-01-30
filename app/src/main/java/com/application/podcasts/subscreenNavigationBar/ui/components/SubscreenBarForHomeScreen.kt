@@ -21,6 +21,7 @@ fun LazyItemScope.SubscreenBarForHomeScreen(
         isActive = uiState.currentSubscreen == CurrentSubscreen.PodcastsSubscreen,
         isEnabled = uiState.currentSubscreen != CurrentSubscreen.PodcastsSubscreen,
         content = "Podcasts",
+        testTag = "Podcasts",
         onClick = {
 
             onNavigateToPodcasts()
@@ -33,6 +34,7 @@ fun LazyItemScope.SubscreenBarForHomeScreen(
         isActive = uiState.currentSubscreen == CurrentSubscreen.HabitTrackerSubscreen,
         isEnabled = uiState.currentSubscreen != CurrentSubscreen.HabitTrackerSubscreen,
         content = "Habit tracker",
+        testTag = "Habit tracker",
         onClick = {
 
             onNavigateToHabitTracker()

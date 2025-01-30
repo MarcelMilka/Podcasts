@@ -39,6 +39,7 @@ fun LazyItemScope.SubscreenBarForExploreScreen(
         isActive = uiState.currentSubscreen == CurrentSubscreen.ExploreSubscreen,
         isEnabled = uiState.currentSubscreen != CurrentSubscreen.ExploreSubscreen,
         content = "Explore",
+        testTag = "Explore",
         onClick = {
 
             onExplore()
@@ -51,6 +52,7 @@ fun LazyItemScope.SubscreenBarForExploreScreen(
         isActive = uiState.currentSubscreen == CurrentSubscreen.SelectLanguageSubscreen,
         isEnabled = uiState.currentSubscreen != CurrentSubscreen.SelectLanguageSubscreen,
         content = "Explore by language",
+        testTag = "Explore by language",
         onClick = {
 
             onExploreByLanguage()
@@ -63,6 +65,7 @@ fun LazyItemScope.SubscreenBarForExploreScreen(
         isActive = uiState.currentSubscreen == CurrentSubscreen.FilterSubscreen,
         isEnabled = uiState.currentSubscreen != CurrentSubscreen.FilterSubscreen,
         content = "Filter",
+        testTag = "Filter",
         onClick = {
 
             onFilter()
