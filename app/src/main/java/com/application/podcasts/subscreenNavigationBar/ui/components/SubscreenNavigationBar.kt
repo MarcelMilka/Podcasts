@@ -21,7 +21,6 @@ fun SubscreenNavigationBar(
     stateFlowOfViewState: StateFlow<SubscreenNavigationBarViewState>,
     onSearch: () -> Unit,
     onExplore: () -> Unit,
-    onExploreByLanguage: () -> Unit,
     onFilter: () -> Unit,
     onNavigateToPodcasts: () -> Unit,
     onNavigateToHabitTracker: () -> Unit,
@@ -76,11 +75,6 @@ fun SubscreenNavigationBar(
                                     onExplore = {
 
                                         onExplore()
-                                    },
-
-                                    onExploreByLanguage = {
-
-                                        onExploreByLanguage()
                                     },
 
                                     onFilter = {

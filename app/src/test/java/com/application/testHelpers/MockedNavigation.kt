@@ -44,14 +44,6 @@ object MockedNavigation {
         causeOfError = null
     )
 
-    const val SELECT_LANGUAGE_ROUTE = "com.application.podcasts.constants.navigation.Navigation.RouteExplore.SelectLanguageSubscreen"
-    val subscreenSelectLanguage = mockk<NavBackStackEntry>(relaxed = true)
-    val selectLanguageViewState = SubscreenNavigationBarViewState(
-        currentScreen = CurrentScreen.ExploreScreen,
-        currentSubscreen = CurrentSubscreen.SelectLanguageSubscreen,
-        causeOfError = null
-    )
-
     const val FILTER_LANGUAGE = "com.application.podcasts.constants.navigation.Navigation.RouteExplore.FilterSubscreen"
     val subscreenFilter = mockk<NavBackStackEntry>(relaxed = true)
     val filterViewState = SubscreenNavigationBarViewState(
@@ -112,7 +104,6 @@ object MockedNavigation {
 
         coEvery { subscreenExplore.destination.route } returns EXPLORE_ROUTE
         coEvery { subscreenSearch.destination.route } returns SEARCH_ROUTE
-        coEvery { subscreenSelectLanguage.destination.route } returns SELECT_LANGUAGE_ROUTE
         coEvery { subscreenFilter.destination.route } returns FILTER_LANGUAGE
 
         coEvery { subscreenAccount.destination.route } returns ACCOUNT_ROUTE

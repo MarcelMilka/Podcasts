@@ -32,13 +32,6 @@ fun SubscreenNavigationBarImpl(navHostController: NavHostController) {
             )
         },
 
-        onExploreByLanguage = {
-
-            navHostController.navigate(
-                route = Navigation.RouteExplore.SelectLanguageSubscreen
-            )
-        },
-
         onFilter = {
 
             navHostController.navigate(

@@ -18,7 +18,6 @@ fun LazyItemScope.SubscreenBarForExploreScreen(
     uiState: SubscreenNavigationBarViewState,
     onSearch: () -> Unit,
     onExplore: () -> Unit,
-    onExploreByLanguage: () -> Unit,
     onFilter: () -> Unit
 ) {
 
@@ -47,17 +46,6 @@ fun LazyItemScope.SubscreenBarForExploreScreen(
     )
 
     Spacer(Modifier.width(5.dp))
-
-    SubscreenNavigationBarButton(
-        isActive = uiState.currentSubscreen == CurrentSubscreen.SelectLanguageSubscreen,
-        isEnabled = uiState.currentSubscreen != CurrentSubscreen.SelectLanguageSubscreen,
-        content = "Explore by language",
-        testTag = "Explore by language",
-        onClick = {
-
-            onExploreByLanguage()
-        }
-    )
 
     Spacer(Modifier.width(5.dp))
 

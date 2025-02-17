@@ -17,16 +17,7 @@ sealed class Navigation {
         object ExploreSubscreen: RouteExplore()
 
         @Serializable
-        object SelectLanguageSubscreen: RouteExplore()
-
-        @Serializable
-        object ExploreByLanguageSubscreen: RouteExplore()
-
-        @Serializable
         object FilterSubscreen: RouteExplore()
-
-        @Serializable
-        object ExploreByGenreSubscreen: RouteExplore()
     }
 
     @Serializable

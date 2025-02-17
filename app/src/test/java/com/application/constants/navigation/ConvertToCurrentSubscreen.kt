@@ -13,10 +13,7 @@ class ConvertToCurrentSubscreen {
 
         assertEquals(CurrentSubscreen.SearchSubscreen, "SearchSubscreen".convertToCurrentSubscreen())
         assertEquals(CurrentSubscreen.ExploreSubscreen, "ExploreSubscreen".convertToCurrentSubscreen())
-        assertEquals(CurrentSubscreen.SelectLanguageSubscreen, "SelectLanguageSubscreen".convertToCurrentSubscreen())
-        assertEquals(CurrentSubscreen.ExploreByLanguageSubscreen, "ExploreByLanguageSubscreen".convertToCurrentSubscreen())
         assertEquals(CurrentSubscreen.FilterSubscreen, "FilterSubscreen".convertToCurrentSubscreen())
-        assertEquals(CurrentSubscreen.ExploreByGenreSubscreen, "ExploreByGenreSubscreen".convertToCurrentSubscreen())
         assertEquals(CurrentSubscreen.PodcastsSubscreen, "PodcastsSubscreen".convertToCurrentSubscreen())
         assertEquals(CurrentSubscreen.HabitTrackerSubscreen, "HabitTrackerSubscreen".convertToCurrentSubscreen())
         assertEquals(CurrentSubscreen.LibrarySubscreen, "LibrarySubscreen".convertToCurrentSubscreen())

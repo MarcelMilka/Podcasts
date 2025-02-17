@@ -15,7 +15,6 @@ import com.application.podcasts.main.account.ui.impl.accountImpl
 import com.application.podcasts.main.explore.explore.ui.impl.exploreImpl
 import com.application.podcasts.main.explore.filter.ui.impl.filterImpl
 import com.application.podcasts.main.explore.search.ui.impl.searchImpl
-import com.application.podcasts.main.explore.selectLanguage.ui.impl.selectLanguageImpl
 import com.application.podcasts.main.home.habitTracker.ui.impl.habitTrackerImpl
 import com.application.podcasts.main.home.podcasts.ui.impl.podcastsImpl
 import com.application.podcasts.main.library.ui.impl.libraryImpl
@@ -72,8 +71,6 @@ class MainActivity : ComponentActivity() {
                                 searchImpl()
 
                                 exploreImpl()
-
-                                selectLanguageImpl()
 
                                 filterImpl()
                             }

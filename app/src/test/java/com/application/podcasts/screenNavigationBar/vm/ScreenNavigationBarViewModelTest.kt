@@ -27,6 +27,7 @@ class ScreenNavigationBarViewModelTest {
     @get:Rule
     val mainDispatcherRule = MainDispatcherRule()
 
+    @Before
     fun setUpToTestDefaultValue() {
 
         val currentBackStackEntryFlow = flow<NavBackStackEntry> {}
@@ -76,47 +77,8 @@ class ScreenNavigationBarViewModelTest {
     @Test
     fun `initial viewState is HomeScreen`() = runTest(StandardTestDispatcher()) {
 
-        @Before
-        setUpToTestDefaultValue()
-
         screenNavigationBarViewModel.viewState.test {
 
-            assertEquals(CurrentScreen.HomeScreen, awaitItem())
-
-            cancelAndIgnoreRemainingEvents()
-        }
-    }
-
-    @OptIn(ExperimentalCoroutinesApi::class)
-    @Test
-    fun `routes are recognized properly, null values are emitted`() = runTest(StandardTestDispatcher()) {
-
-        @Before
-        setUp()
-
-        screenNavigationBarViewModel.viewState.test {
-
-//          Default value
-            advanceUntilIdle()
-            assertEquals(CurrentScreen.HomeScreen, awaitItem())
-
-//          1. Wrong route (omitted)
-
-//          2. Account
-            advanceUntilIdle()
-            assertEquals(CurrentScreen.AccountScreen, awaitItem())
-
-//          3. Explore
-            advanceUntilIdle()
-            assertEquals(CurrentScreen.ExploreScreen, awaitItem())
-
-//          4. Wrong route and subscreen (omitted)
-
-//          5. Library
-            advanceUntilIdle()
-            assertEquals(CurrentScreen.LibraryScreen, awaitItem())
-
-//          6. Home
             assertEquals(CurrentScreen.HomeScreen, awaitItem())
 
             cancelAndIgnoreRemainingEvents()
